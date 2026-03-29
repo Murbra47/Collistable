@@ -1,0 +1,9 @@
+// Tools — Reusable SCSS mixins and functions
+
+@mixin card-hover-lift($scale: 1.03, $duration: 0.2s) {
+  transition: transform $duration, box-shadow $duration;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}

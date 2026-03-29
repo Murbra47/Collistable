@@ -1,0 +1,10 @@
+// Component — GameDetails page
+@use '../settings/variables' as v;
+
+.cover-image {
+  width: v.$cover-image-width;
+}
+
+.game-summary {
+  max-width: v.$game-summary-max-width;
+}

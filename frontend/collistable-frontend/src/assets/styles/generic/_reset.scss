@@ -1,0 +1,9 @@
+// Generic — Low-specificity resets
+// Bootstrap already provides box-sizing reset and normalize.
+// Add only project-level resets here.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

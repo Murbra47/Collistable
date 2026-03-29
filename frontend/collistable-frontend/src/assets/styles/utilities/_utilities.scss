@@ -1,0 +1,17 @@
+// Utilities — High-specificity helper overrides
+// Use sparingly. Prefer component or layout styles where possible.
+
+// Required field indicators — usable in any form
+// Automatically appends a red asterisk to labels preceding required inputs,
+// selects, or textareas. No extra markup needed.
+label:has(+ input:required)::after,
+label:has(+ select:required)::after,
+label:has(+ textarea:required)::after {
+  content: ' *';
+  color: $danger;
+}
+
+.required-note {
+  font-size: 0.85rem;
+  color: $gray-600;
+}

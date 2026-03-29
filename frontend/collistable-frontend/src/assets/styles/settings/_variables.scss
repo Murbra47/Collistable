@@ -1,0 +1,13 @@
+// Settings — SCSS variables and Bootstrap overrides
+// Bootstrap variable overrides must be declared before Bootstrap is imported.
+
+// Override Bootstrap primary — indigo #4f46e5 (~6.5:1 contrast with white, WCAG AA)
+$primary: #7c3aed;
+
+// Spacing scale
+$card-img-cover-height: 200px;
+$cover-image-width: 250px;
+$game-summary-max-width: 600px;
+$form-card-max-width: 500px;
+$filter-select-width: 150px;
+$sort-select-width: 160px;

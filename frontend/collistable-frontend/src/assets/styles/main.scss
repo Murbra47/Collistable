@@ -1,0 +1,28 @@
+// Settings — custom variables and Bootstrap overrides
+@import 'settings/variables';
+
+// Bootstrap SCSS source — picks up our $primary override above
+@import 'bootstrap/scss/bootstrap';
+
+// Tools — mixins and functions (no CSS output)
+@import 'tools/mixins';
+
+// Generic — resets and box-sizing
+@import 'generic/reset';
+
+// Elements — bare HTML element defaults
+@import 'elements/base';
+
+// Layout — sitewide structural regions
+@import 'layout/layout';
+
+// Components — UI component styles
+@import 'components/card';
+@import 'components/toast';
+@import 'components/GameList';
+@import 'components/GameCreateEdit';
+@import 'components/GameDetails';
+@import 'components/Login';
+
+// Utilities — high-specificity helpers and overrides
+@import 'utilities/utilities';

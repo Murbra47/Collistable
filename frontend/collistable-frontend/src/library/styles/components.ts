@@ -1,0 +1,16 @@
+export const COMPONENTS = {
+  APP_WRAPPER: "app-wrapper",
+  APP_NAV: "app-nav",
+  TOAST_CONTAINER: "toast-container",
+  GAME_CARD: "game-card",
+  FORM_CARD: "form-card",
+  COVER_IMAGE: "cover-image",
+  GAME_SUMMARY: "game-summary",
+  FILTER_SELECT: "filter-select",
+  SORT_SELECT: "sort-select",
+  LOGIN_CARD: "login-card",
+  APP_BRAND: "app-brand",
+  NAV_LINKS: "nav-links",
+  NAV_USER: "nav-user",
+  NAV_AVATAR: "nav-avatar",
+} as const;

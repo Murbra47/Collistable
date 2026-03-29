@@ -1,0 +1,6 @@
+// Component — GameCreateEdit page
+@use '../settings/variables' as v;
+
+.form-card {
+  max-width: v.$form-card-max-width;
+}

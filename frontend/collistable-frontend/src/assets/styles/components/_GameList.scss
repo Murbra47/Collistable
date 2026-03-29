@@ -1,0 +1,15 @@
+// Component — GameList page
+@use '../settings/variables' as v;
+@use '../tools/mixins' as m;
+
+.filter-select {
+  width: v.$filter-select-width;
+}
+
+.sort-select {
+  width: v.$sort-select-width;
+}
+
+.game-card {
+  @include m.card-hover-lift;
+}
