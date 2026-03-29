@@ -8,8 +8,9 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load .env file
-DotNetEnv.Env.Load();
+// Load .env file — only in local development (Railway injects env vars directly)
+if (File.Exists(".env"))
+    DotNetEnv.Env.Load();
 
 // Load environment variables into configuration
 builder.Configuration.AddEnvironmentVariables();
@@ -84,6 +85,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+// Auto-run migrations on startup — required in cloud environments where there is no manual deploy step
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {
