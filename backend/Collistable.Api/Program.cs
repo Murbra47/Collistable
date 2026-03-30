@@ -8,15 +8,24 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load .env file
-DotNetEnv.Env.Load();
+// Load .env file — only in local development (Railway injects env vars directly)
+if (File.Exists(".env"))
+    DotNetEnv.Env.Load();
 
 // Load environment variables into configuration
 builder.Configuration.AddEnvironmentVariables();
 
-// Configure Entity Framework with SQL Server
+// Configure Entity Framework — SQL Server locally, PostgreSQL in production
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+var usePostgres = builder.Configuration["USE_POSTGRES"] == "true";
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    if (usePostgres)
+        options.UseNpgsql(connectionString);
+    else
+        options.UseSqlServer(connectionString);
+});
 
 // Configure CORS to allow requests from the frontend
 builder.Services.AddCors(options =>
@@ -84,6 +93,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+// Initialise the database on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    if (usePostgres)
+        // EnsureCreated creates the schema from the EF Core model — no migrations needed for a fresh deployment
+        db.Database.EnsureCreated();
+    else
+        // SQL Server uses migrations to support incremental schema updates
+        db.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {
