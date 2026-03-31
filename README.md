@@ -37,6 +37,7 @@ A full-stack game collection tracker. Track the games you own and want — with 
 **Infrastructure**
 - Railway (API + PostgreSQL)
 - Netlify (frontend)
+- GitHub Actions (CI)
 
 ---
 
@@ -112,9 +113,26 @@ The frontend will be available at `http://localhost:5173`.
 
 ## Running Tests
 
+### Backend
+
 ```bash
 cd backend
 dotnet test
 ```
 
 18 tests covering `GamesController` (ownership rules, backend timestamp setting, IGDB import deduplication) and `TokenService` (JWT claim generation).
+
+### Frontend
+
+```bash
+cd frontend/collistable-frontend
+npm test
+```
+
+13 tests covering the auth store (token decoding, expiry, localStorage persistence) and `ServiceBase` (401 handling, redirect to login, Authorization header attachment).
+
+---
+
+## CI
+
+GitHub Actions runs both test suites automatically on every push to `main`, `feature/**`, and `dev/**` branches, and on all pull requests targeting `main`.
