@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "feature/**", "dev/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend:
+    name: Backend tests (.NET)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: backend
+
+      - name: Run tests
+        run: dotnet test --no-restore --verbosity normal
+        working-directory: backend
+
+  frontend:
+    name: Frontend tests (Vitest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/collistable-frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: frontend/collistable-frontend
+
+      - name: Run tests
+        run: npm test
+        working-directory: frontend/collistable-frontend
