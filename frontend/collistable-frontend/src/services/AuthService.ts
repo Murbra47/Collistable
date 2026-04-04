@@ -1,6 +1,6 @@
 import { ServiceBase } from "./ServiceBase";
 
-interface GoogleLoginResponse {
+interface AuthResponse {
   token: string;
   name: string;
   pictureUrl?: string | null;
@@ -8,5 +8,8 @@ interface GoogleLoginResponse {
 
 export const authService = {
   loginWithGoogle: (credential: string) =>
-    ServiceBase.post<GoogleLoginResponse>("/auth/google", { credential }),
+    ServiceBase.post<AuthResponse>("/auth/google", { credential }),
+
+  loginWithGithub: (code: string) =>
+    ServiceBase.post<AuthResponse>("/auth/github", { code }),
 };

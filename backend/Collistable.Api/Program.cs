@@ -73,6 +73,13 @@ builder.Services.AddHttpClient<IGDBService>();
 builder.Services.AddScoped<IGDBService>();
 builder.Services.AddScoped<TokenService>();
 
+// Named HttpClient for GitHub OAuth API calls — sets required User-Agent and JSON Accept headers
+builder.Services.AddHttpClient("github", client =>
+{
+    client.DefaultRequestHeaders.Add("User-Agent", "Collistable");
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+});
+
 // Configure JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

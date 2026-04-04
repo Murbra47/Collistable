@@ -17,6 +17,7 @@ export const BUTTON = {
   BTN_SM_OUTLINE_WARNING: "btn btn-sm btn-outline-warning",
   BTN_SM_OUTLINE_PRIMARY: "btn btn-sm btn-outline-primary",
   BTN_SM_OUTLINE_DANGER: "btn btn-sm btn-outline-danger",
+  BTN_DARK: "btn btn-dark",
   BTN_OUTLINE_LIGHT: "btn btn-outline-light",
   BTN_CLOSE: "btn-close",
   BTN_CLOSE_WHITE: "btn-close btn-close-white",

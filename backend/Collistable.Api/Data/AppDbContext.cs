@@ -17,6 +17,10 @@ public class AppDbContext : DbContext
             .IsUnique();
 
         modelBuilder.Entity<User>()
+            .HasIndex(u => u.GithubId)
+            .IsUnique();
+
+        modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
 

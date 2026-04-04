@@ -4,6 +4,7 @@ import SearchGames from "../pages/SearchGames.vue";
 import GameCreateEdit from "../pages/GameCreateEdit.vue";
 import GameDetails from "../pages/GameDetails.vue";
 import Login from "../pages/Login.vue";
+import GithubCallback from "../pages/GithubCallback.vue";
 import { useAuthStore } from "../stores/auth";
 
 export const router = createRouter({
@@ -15,6 +16,7 @@ export const router = createRouter({
     { path: "/edit/:id", component: GameCreateEdit },
     { path: "/games/:id", component: GameDetails },
     { path: "/login", component: Login, meta: { public: true } },
+    { path: "/auth/github/callback", component: GithubCallback, meta: { public: true } },
   ],
 });
 

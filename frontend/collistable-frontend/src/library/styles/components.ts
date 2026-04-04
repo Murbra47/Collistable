@@ -9,6 +9,7 @@ export const COMPONENTS = {
   FILTER_SELECT: "filter-select",
   SORT_SELECT: "sort-select",
   LOGIN_CARD: "login-card",
+  GITHUB_BTN: "github-btn",
   APP_BRAND: "app-brand",
   NAV_LINKS: "nav-links",
   NAV_USER: "nav-user",
