@@ -1,0 +1,6 @@
+// Pages — GameCreateEdit
+@use '../abstracts/variables' as v;
+
+.form-card {
+  max-width: v.$form-card-max-width;
+}

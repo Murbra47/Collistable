@@ -1,28 +1,52 @@
-// Settings — custom variables and Bootstrap overrides
-@import 'settings/variables';
+// =============================================================================
+// main.scss — Collistable stylesheet entry point
+//
+// Layer order follows the Inverted Triangle CSS (ITCSS) methodology:
+// least-specific → most-specific. Each layer can only affect layers below it.
+//
+// Structure follows the 7-1 pattern:
+//   abstracts/ · base/ · layout/ · components/ · pages/ · utilities/
+//   (themes/ and vendors/ added here when required)
+// =============================================================================
 
-// Bootstrap SCSS source — picks up our $primary override above
+// -----------------------------------------------------------------------------
+// ABSTRACTS — variables and mixins. No CSS output.
+// Variables must precede the Bootstrap import so overrides take effect.
+// -----------------------------------------------------------------------------
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// VENDORS — Bootstrap source (picks up our $primary override above)
+// -----------------------------------------------------------------------------
 @import 'bootstrap/scss/bootstrap';
 
-// Tools — mixins and functions (no CSS output)
-@import 'tools/mixins';
+// -----------------------------------------------------------------------------
+// BASE — resets and bare element defaults
+// -----------------------------------------------------------------------------
+@import 'base/reset';
+@import 'base/base';
 
-// Generic — resets and box-sizing
-@import 'generic/reset';
-
-// Elements — bare HTML element defaults
-@import 'elements/base';
-
-// Layout — sitewide structural regions
+// -----------------------------------------------------------------------------
+// LAYOUT — sitewide structural regions
+// -----------------------------------------------------------------------------
 @import 'layout/layout';
 
-// Components — UI component styles
+// -----------------------------------------------------------------------------
+// COMPONENTS — reusable UI pieces used across multiple pages
+// -----------------------------------------------------------------------------
 @import 'components/card';
 @import 'components/toast';
-@import 'components/GameList';
-@import 'components/GameCreateEdit';
-@import 'components/GameDetails';
-@import 'components/Login';
 
-// Utilities — high-specificity helpers and overrides
+// -----------------------------------------------------------------------------
+// PAGES — styles scoped to a single page or route
+// -----------------------------------------------------------------------------
+@import 'pages/game-list';
+@import 'pages/game-create-edit';
+@import 'pages/game-details';
+@import 'pages/login';
+
+// -----------------------------------------------------------------------------
+// UTILITIES — high-specificity helpers and overrides. Always last.
+// -----------------------------------------------------------------------------
 @import 'utilities/utilities';
