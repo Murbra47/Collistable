@@ -8,12 +8,15 @@
 }
 
 // vue3-google-login renders its button inside a wrapper with display: inline-block.
-// Override it to block so the button stretches to match the GitHub button width.
-// The personalised "Sign in as <user>" variant renders a child div with its own
-// fixed width — target that too so both Google button variants stay full width.
-.login-card .g-btn-wrapper,
-.login-card .g-btn-wrapper > div {
+// The personalised "Sign in as <user>" variant nests multiple divs and may render
+// an iframe — all descendants need width: 100% so both button variants stay full width.
+.login-card .g-btn-wrapper {
   display: block !important;
+  width: 100% !important;
+}
+
+.login-card .g-btn-wrapper div,
+.login-card .g-btn-wrapper iframe {
   width: 100% !important;
 }
 
