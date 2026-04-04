@@ -1,6 +1,6 @@
-// Component — GameList page
-@use '../settings/variables' as v;
-@use '../tools/mixins' as m;
+// Pages — GameList
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 .filter-select {
   width: v.$filter-select-width;

@@ -1,5 +1,5 @@
-// Component — GameDetails page
-@use '../settings/variables' as v;
+// Pages — GameDetails
+@use '../abstracts/variables' as v;
 
 .cover-image {
   width: v.$cover-image-width;

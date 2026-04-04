@@ -5,7 +5,10 @@ public class User
     public int Id { get; set; }
 
     // Google's stable "sub" claim — never changes even if the user's email changes
-    public string GoogleSub { get; set; } = "";
+    public string? GoogleSub { get; set; }
+
+    // GitHub's numeric user ID
+    public string? GithubId { get; set; }
     public string Email { get; set; } = "";
     public string Name { get; set; } = "";
     public string? PictureUrl { get; set; }

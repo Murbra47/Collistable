@@ -1,5 +1,5 @@
 // Component — Shared card styles (used in GameList and SearchGames)
-@use '../settings/variables' as v;
+@use '../abstracts/variables' as v;
 
 .card-img-cover {
   height: v.$card-img-cover-height;

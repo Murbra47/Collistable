@@ -1,0 +1,28 @@
+// Pages — Login
+@use '../abstracts/variables' as v;
+
+.login-card {
+  max-width: v.$login-card-max-width;
+  margin: 15vh auto 0;
+  text-align: center;
+}
+
+// vue3-google-login renders its button inside a wrapper with display: inline-block.
+// Override it to block so the button stretches to match the GitHub button width.
+.login-card .g-btn-wrapper {
+  display: block !important;
+  width: 100%;
+}
+
+// Pin the GitHub icon to the far left of the button (matching Google button icon placement).
+// The SVG is absolutely positioned so the button text remains centered.
+.github-btn {
+  position: relative;
+
+  svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
